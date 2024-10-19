@@ -1,0 +1,21 @@
+#include <Arduino.h>
+
+//definición de la posición del potenciometro, la lectura del mismo y su mapeo
+#define Pot 36
+int valorPot = 0;
+int mapPot = 0;
+
+void setup(){
+  Serial2.begin(115200);
+}
+
+void loop(){
+  //leer y mapear potemciometrod
+  valorPot = analogRead(Pot);
+  mapPot = (valorPot, 0, 4095, 0, 9);
+
+  //enviar mi valor de potenciometro 
+  Serial2.write(mapPot);
+  delay (500);
+
+}
